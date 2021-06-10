@@ -40,24 +40,26 @@ body {
   position: absolute;
   z-index: 100;
   padding-top: 100px;
+  height: 40px;
+  width: 40vw;
+  form {
+    height: 100%;
+  }
   .search{
-    height: 40px;
-    width: 40vw;
-    border-radius: 15px;
+    height: 100%;
+    width: 70%;
+    border-radius: 15px 0 0 15px;
     border: none;
     outline: none;
-
-    
-      padding-left: 20px;
-    
+    padding-left: 20px;
   }
   button {
     border-bottom-right-radius: 15px;
     border-top-right-radius: 15px;
-    height: 43px;
+    height: 100%;
     background-color: $Dark-Gray;
     color: white;
-    transform: translate(-28px);
+    
     outline: none;
     border: none;
     width: 40px;
@@ -94,4 +96,33 @@ body {
       
     }
   }
+}
+
+@media only screen and (max-width: 750px) {
+  
+    .hud > .box > .output {
+      font-size: 1.9vw;
+    }
+    .hud > .box > span {
+      font-size: 2vw;
+    }
+    .search-bar {
+        width: 60vw;
+      .search {
+        font-size: 2.3vw;
+      }
+      button {
+        width: 35px;
+      }
+    }
+
+    .hud {
+      height: 100px;
+      .box {
+        margin: 5px;
+
+      }
+    }
+    
+  
 }
