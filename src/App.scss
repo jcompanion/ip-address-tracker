@@ -42,11 +42,14 @@ body {
   padding-top: 100px;
   height: 40px;
   width: 40vw;
+  
   form {
     height: 100%;
+    display: flex;
+    justify-content: center;
   }
   .search{
-    height: 100%;
+    height: calc(100% - 2px);
     width: 70%;
     border-radius: 15px 0 0 15px;
     border: none;

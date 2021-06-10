@@ -11,8 +11,6 @@ export default class Header extends React.Component {
   }
   mySubmitHandler = event => {
     event.preventDefault()
-
-
     this.getIpLocation()
   }
   myChangeHandler = event => {
@@ -21,10 +19,12 @@ export default class Header extends React.Component {
   }
 
   getIpLocation = () => {
-    axios.get("http://ip-api.com/json/" + this.state.ip).then(res => this.setState({ data: res.data }))
+    axios.get("https://ipapi.co/" + this.state.ip + "/json/").then(res => this.setState({ data: res.data }))
   }
 
-  
+  componentDidMount() {
+    this.getIpLocation()
+  }
 
   render() {
     return (

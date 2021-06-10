@@ -5,7 +5,7 @@ export default function HUD(props) {
     <div className="hud">
       <div className="box">
         <span className="title">IP ADDRESS</span>
-        <h5 className="output">{props.data.query ? props.data.query : "Search without typing for your IP"}</h5>
+        <h5 className="output">{props.data.ip ? props.data.ip : "Search without typing for your IP"}</h5>
       </div>
       <div className="box">
         <span className="title">LOCATION</span>
@@ -18,11 +18,11 @@ export default function HUD(props) {
       </div>
       <div className="box">
         <span className="title">TIMEZONE</span>
-        <h5 className="output">{props.data.timezone}</h5>
+        <h5 className="output">{props.data.timezone ? `${props.data.timezone} \n ${props.data.utc_offset}` : <span>Loading...</span>}</h5>
       </div>
       <div className="box">
         <span className="title">ISP</span>
-        <h5 className="output">{props.data.isp}</h5>
+        <h5 className="output">{props.data.org}</h5>
       </div>
     </div>
   )

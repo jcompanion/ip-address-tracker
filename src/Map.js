@@ -4,20 +4,28 @@ import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet"
 const defaultCenter = [38.9072, -77.0369]
 const defaultZoom = 8
 
-function FlyTo(data) {
+const FlyTo = location => {
   const map = useMap()
-  if (data.data.query) {
-    map.flyTo([data.data.lat, data.data.lon], 14, {
+  console.log(location.location.latitude)
+  if (location.location.latitude) {
+    map.flyTo([location.location.latitude, location.location.longitude], 14, {
       duration: 2
     })
-    console.log(data)
+    console.log(location)
     return (
-      <Marker position={data.data.lon ? [data.data.lat, data.data.lon] : defaultCenter}>
-        <Popup>{`Latitude: ${data.data.lat ? data.data.lat : defaultCenter[0]}, Longitude: ${data.data.lon ? data.data.lon : defaultCenter[1]}`}</Popup>
+      <Marker position={location.location.longitude ? [location.location.latitude, location.location.longitude] : defaultCenter}>
+        <Popup>
+          {`Latitude: ${location.location.latitude ? location.location.latitude : defaultCenter[0]},
+           Longitude: ${location.location.longitude ? location.location.longitude : defaultCenter[1]},
+           City: ${location.location.city},
+           State: ${location.location.region},
+           Zip Code: ${location.location.postal},
+           Currency: ${location.location.currency_name}`}
+        </Popup>
       </Marker>
     )
   } else {
-    console.log("Error flying to location: " + data)
+    console.log("Error flying to location: " + location)
     return <Marker position={defaultCenter} />
   }
 }
@@ -25,7 +33,8 @@ function FlyTo(data) {
 function Map(props) {
   return (
     <MapContainer center={defaultCenter} zoom={defaultZoom} zoomControl={false} scrollWheelZoom={true}>
-      <FlyTo data={props.data} />
+      {console.log(props)}
+      <FlyTo location={props.data} />
       <TileLayer attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors' url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
     </MapContainer>
   )
